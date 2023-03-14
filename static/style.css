@@ -115,25 +115,47 @@
   }
 
   pre {
-    margin: 0;
+    background-color: #272822;
+    color: #f8f8f2;
     padding: 10px;
-    background-color: #f4f4f4;
-    font-family: monospace;
-    font-size: 14px;
-    white-space: pre-wrap;
-    word-wrap: break-word;
     border-radius: 5px;
-    overflow: auto;
+    overflow-x: auto;
+    font-size: 14px;
   }
   
   pre code {
-    display: block;
-    padding: 0;
-    font-family: inherit;
-    font-size: inherit;
-    line-height: inherit;
-    color: inherit;
-    background-color: transparent;
-    border: none;
-    margin: 0;
+    font-family: "Consolas", "Menlo", "Courier New", monospace;
+    font-size: 14px;
   }
+  
+  .code-container {
+    position: relative;
+  }
+  
+  .copy-button {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background-color: #fff;
+    color: #444;
+    border: none;
+    border-radius: 3px;
+    padding: 5px;
+    cursor: pointer;
+  }
+  
+  .copy-button:hover {
+    background-color: #f8f8f8;
+  }
+
+  div.code-container {
+    position: relative;
+  }
+  
+  div.code-container .copy-button {
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+  
+  

@@ -28,12 +28,40 @@ function sendContext() {
 ws.onmessage = function(evt) {
   var message = JSON.parse(evt.data);
   var node = document.createElement("LI");
-  var textnode = document.createTextNode(message.message);
-  node.appendChild(textnode);
   node.classList.add("mb-2");
   node.classList.add(message.from === "user" ? "from-me" : "from-them");
+
+  // Si el mensaje contiene código, lo resaltamos y le agregamos un botón para copiarlo
+  if (message.message.match(/```(.|\n)*```/g)) {
+    // Resaltar el código con Highlight.js
+    var code = message.message.replace(/```(.|\n)*```/g, function(match) {
+      return '<pre><code class="python">' + match.substring(3, match.length - 3) + '</code></pre>';
+    });
+    var div = document.createElement("div");
+    div.innerHTML = code;
+    div.classList.add("code-container");
+
+    // Agregar botón para copiar el código
+    var copyButton = document.createElement("button");
+    copyButton.innerHTML = '<i class="fas fa-copy"></i>';
+    copyButton.classList.add("copy-button");
+    copyButton.addEventListener("click", function() {
+      var codeElement = this.parentNode.querySelector("code");
+      var code = codeElement.innerText;
+      navigator.clipboard.writeText(code);
+    });
+    div.appendChild(copyButton);
+
+    node.appendChild(div);
+  } else {
+    var textnode = document.createTextNode(message.message);
+    node.appendChild(textnode);
+  }
+
   document.getElementById("lista_messages").appendChild(node);
   document.getElementById("message_input").focus();
+  // Resaltar el código con Highlight.js
+  hljs.highlightAll();
 };
 
 
