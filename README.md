@@ -35,3 +35,5 @@ Formato:
 
 ## Ejemplo de comportamiento
 ![image](https://user-images.githubusercontent.com/25454965/224977022-4d369798-9239-434c-8e9a-c21b53b2ab96.png)
+![image](https://user-images.githubusercontent.com/25454965/225022200-05a7ee27-d4b3-4f78-9f94-b3bf8838f403.png)
+
