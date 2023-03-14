@@ -38,6 +38,8 @@
   .media-body small {
     display: block;
     font-size: 0.7rem;
+  }
+  .media-body{
     padding-top: 25px;
   }
   
