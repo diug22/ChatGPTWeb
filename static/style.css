@@ -1,0 +1,88 @@
+.card {
+    border: none;
+  }
+  
+  .card-header {
+    padding: 0;
+  }
+  
+  .card-footer {
+    border-top: none;
+    padding: 0;
+  }
+  
+  .media {
+    margin-bottom: 0;
+  }
+  
+  .media img {
+    height: 100px;
+  }
+  
+  .media-body small {
+    display: block;
+    font-size: 0.7rem;
+  }
+  
+  #chat_messages li {
+    max-width: 100%;
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    position: relative;
+    display: inline-block; /* Agregar esta línea para mostrar los elementos en vertical */
+  }
+  
+  #chat_messages li.from-me {
+    background-color: #f5f5f5;
+    float: right;
+  }
+  
+  #chat_messages li.from-me:before {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-top: 10px solid #f5f5f5;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    top: 0;
+    right: -10px;
+  }
+  
+  #chat_messages li.from-them {
+    background-color: #dcf8c6;
+    float: left;
+  }
+  
+  #chat_messages li.from-them:before {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-top: 10px solid #dcf8c6;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    top: 0;
+    left: -10px;
+  }
+  
+  form {
+    width: 100%;
+    float: left;
+  }
+  
+  #chat_messages {
+    float: right;
+  }
+
+  textarea[name="contexto"] {
+    height: 500px;
+    width: 80%;
+  }
+
+  #button_send {
+    width: 100%;
+    font-size: 18px;
+    padding: 12px 80px;
+  }
