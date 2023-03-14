@@ -8,18 +8,16 @@ import datetime
 import os
 import csv
 from tornado.web import RequestHandler
-
-
 import openai
+import webbrowser
 
-
-openai.api_key = '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'
+openai.api_key = os.environ.get('OPEN_AI_API_KEY')
 
 
 
 class MainHandler(tornado.web.RequestHandler):
     def get(self):
-        with open("contexto.txt", "r") as f:
+        with open("contexto.txt", "r", encoding="utf-8") as f:
             contexto = f.read()
         self.render("templates/index.html", contexto=contexto)
 
@@ -40,10 +38,9 @@ class ChatHandler(tornado.websocket.WebSocketHandler):
         }
         self.id = secrets.token_hex(10)
         self.context_file()
-        print('Entry')
 
     def context_file(self):
-        contexto_archivo = open("contexto.txt", "r")
+        contexto_archivo = open("contexto.txt", "r", encoding="utf-8")
         contexto = contexto_archivo.read()
         self.save_message('system',contexto)
 
@@ -64,7 +61,6 @@ class ChatHandler(tornado.websocket.WebSocketHandler):
 
 
     def on_message(self, message):
-        print(message)
         message = json.loads(message)
         if message['from'] == "user": 
             self.user_message(message)
@@ -87,22 +83,17 @@ class ChatHandler(tornado.websocket.WebSocketHandler):
         self.finish_process()
         
     def context_message(self,message):
-        print(message['message'])
-        with open("contexto.txt", "w") as f:
+        with open("contexto.txt", "w", encoding="utf-8") as f:
             f.write(message['message'])
         self.finish_process()
         self.init_conversation()
 
     def finish_process(self):
        
-        archivo_csv = open('data/history.csv', mode='a', newline='')
+        archivo_csv = open('data/history.csv', mode='a', newline='', encoding="utf-8")
 
         escritor_csv = csv.writer(archivo_csv)
         for i in range(0,len(self.context["Message"])):
-            print([self.context["Hora"][i],
-                            self.context["Message"][i],
-                            self.context["Role"][i],
-                            self.context["Id"][i]])
             escritor_csv.writerow([self.context["Hora"][i],
                             self.context["Message"][i],
                             self.context["Role"][i],
@@ -115,8 +106,6 @@ class ChatHandler(tornado.websocket.WebSocketHandler):
             "Id": []
         }
 
-        print('--------------------')
-
     def on_close(self):
         ChatHandler.connections.remove(self)
 
@@ -128,4 +117,5 @@ if __name__ == "__main__":
         (r"/static/(.*)", tornado.web.StaticFileHandler, {"path": tornado.web.StaticFileHandler.get_absolute_path(__file__, "static")}),
     ], debug=True, static_path='static')
     app.listen(8888)
-    tornado.ioloop.IOLoop.current().start()
+    webbrowser.open('http://localhost:8888')
+    tornado.ioloop.IOLoop.current().start() 
