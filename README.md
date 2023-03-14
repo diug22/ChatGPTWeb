@@ -34,4 +34,4 @@ Formato:
 
 
 ## Ejemplo de comportamiento
-![image](https://user-images.githubusercontent.com/25454965/224962256-c911868e-bdb0-41d8-9712-52cd75618aa4.png)
+![image](https://user-images.githubusercontent.com/25454965/224977022-4d369798-9239-434c-8e9a-c21b53b2ab96.png)
