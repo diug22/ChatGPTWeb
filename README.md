@@ -32,5 +32,5 @@ Role: Quien ha mandado el mensaje. Puede ser User,Assitant o System.
 Id: Identificador unico de la conversación
 
 
-##Ejemplo de comportamiento
+## Ejemplo de comportamiento
 ![image](https://user-images.githubusercontent.com/25454965/224962256-c911868e-bdb0-41d8-9712-52cd75618aa4.png)
