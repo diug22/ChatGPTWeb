@@ -24,15 +24,20 @@
   
   .media {
     margin-bottom: 0;
+    padding-left: 16px;
+    padding-top: 16px;
+    padding-bottom: 16px;
   }
   
   .media img {
     height: 100px;
+    width: 100px;
   }
   
   .media-body small {
     display: block;
     font-size: 0.7rem;
+    padding-top: 25px;
   }
   
   #chat_messages li {
