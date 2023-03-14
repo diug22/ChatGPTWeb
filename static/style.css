@@ -11,6 +11,7 @@
     height: 800px;
     overflow-y: scroll;
     background-color: #DCDCDC;
+    scroll-behavior: smooth;
   }
 
   .contexto{
@@ -101,4 +102,38 @@
     width: 100%;
     font-size: 18px;
     padding: 12px 80px;
+  }
+
+  .btn-record {
+    background-color: white !important;
+  }
+  .btn-record-recording {
+    background-color: red !important;
+  }
+  .btn-record i {
+    color: black;
+  }
+
+  pre {
+    margin: 0;
+    padding: 10px;
+    background-color: #f4f4f4;
+    font-family: monospace;
+    font-size: 14px;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    border-radius: 5px;
+    overflow: auto;
+  }
+  
+  pre code {
+    display: block;
+    padding: 0;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    color: inherit;
+    background-color: transparent;
+    border: none;
+    margin: 0;
   }

@@ -49,3 +49,29 @@ document.getElementById("message_input").onkeypress = function(event) {
 document.getElementById("message_input").focus();
 
 document.getElementById("context-form").onsubmit = sendContext;
+
+var recognition = new window.webkitSpeechRecognition();
+
+recognition.onresult = function(event) {
+  var message = event.results[0][0].transcript;
+  document.getElementById("message_input").value = message;
+  sendMessage();
+};
+
+var buttonRecord = document.getElementById("button_record");
+
+buttonRecord.onclick = function() {
+  if (recognition.recording) {
+    recognition.stop();
+  } else {
+    recognition.start();
+  }
+};
+
+recognition.onstart = function() {
+  buttonRecord.classList.add("btn-record-recording");
+};
+
+recognition.onend = function() {
+  buttonRecord.classList.remove("btn-record-recording");
+};
