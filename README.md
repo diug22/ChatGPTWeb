@@ -25,11 +25,12 @@ Se abrira una nueva pestaña donde se podra chatear con la API de ChatGPT, adem�
 Contendra el contexto al inicializar la conversación, siempre que se haga un cambio este se reflejara en el fichero.
 
 ### History.csv
-Almacenamiento de las diferentes conversaciones que se estan teniendo. Formato:
-Hora: Hora del mensaje
-Message: Mensaje en texto
-Role: Quien ha mandado el mensaje. Puede ser User,Assitant o System.
-Id: Identificador unico de la conversación
+Almacenamiento de las diferentes conversaciones que se estan teniendo.
+Formato: 
+- **Hora**: Hora del mensaje
+- **Message** : Mensaje en texto
+- **Role** : Quien ha mandado el mensaje. Puede ser User,Assitant o System.
+- **Id** : Identificador unico de la conversación
 
 
 ## Ejemplo de comportamiento
