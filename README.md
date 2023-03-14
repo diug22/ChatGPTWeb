@@ -4,12 +4,12 @@ Uso de la api de ChatGPT en el navegador con estilo de chat.
 ## Prerequisitos
 `pip install -r requirements.txt`  
 
-Añadir la API de OpenAI.
+### Añadir la API de OpenAI.
 
-### Windows
+#### Windows
 `setx OPEN_AI_API_KEY {API_KEY_OPEN_AI}`  
 
-### Linux/Mac
+#### Linux/Mac
 `export OPEN_AI_API_KEY {API_KEY_OPEN_AI}`  
 
 
