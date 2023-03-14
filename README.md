@@ -7,7 +7,7 @@ Uso de la api de ChatGPT en el navegador con estilo de chat.
 Añadir la API de OpenAI.
 
 ### Windows
-`SET OPEN_AI_API_KEY {API_KEY_OPEN_AI}`  
+`setx OPEN_AI_API_KEY {API_KEY_OPEN_AI}`  
 
 ### Linux/Mac
 `export OPEN_AI_API_KEY {API_KEY_OPEN_AI}`  
@@ -30,3 +30,7 @@ Hora: Hora del mensaje
 Message: Mensaje en texto
 Role: Quien ha mandado el mensaje. Puede ser User,Assitant o System.
 Id: Identificador unico de la conversación
+
+
+##Ejemplo de comportamiento
+![image](https://user-images.githubusercontent.com/25454965/224962256-c911868e-bdb0-41d8-9712-52cd75618aa4.png)
