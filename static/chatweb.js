@@ -16,13 +16,28 @@ function sendMessage() {
   return false;
 }
 
+function loading_message(){
+  var node = document.createElement("LI");
+  node.classList.add("loading-message");
+  node.classList.add("mb-2");
+  node.classList.add("from-them");
+  var div = document.createElement("div");
+  div.classList.add("loading-dots");
+  for(let i=0;i<3;i++){
+    var dot = document.createElement("span");
+    dot.classList.add("dot");
+    div.appendChild(dot);
+  }
+  node.appendChild(div);
+  document.getElementById("lista_messages").appendChild(node);
+}
+
 function sendContext() {
   var message = document.getElementById("contexto").value;
   console.log(message)
   ws.send(JSON.stringify({ message: message, from: "system" }));
   location.reload();
   return false;
-  return false
 }
 
 ws.onmessage = function(evt) {
@@ -31,9 +46,7 @@ ws.onmessage = function(evt) {
   node.classList.add("mb-2");
   node.classList.add(message.from === "user" ? "from-me" : "from-them");
 
-  // Si el mensaje contiene código, lo resaltamos y le agregamos un botón para copiarlo
   if (message.message.match(/```(.|\n)*```/g)) {
-    // Resaltar el código con Highlight.js
     var code = message.message.replace(/```(.|\n)*```/g, function(match) {
       return '<pre><code class="python">' + match.substring(3, match.length - 3) + '</code></pre>';
     });
@@ -41,7 +54,6 @@ ws.onmessage = function(evt) {
     div.innerHTML = code;
     div.classList.add("code-container");
 
-    // Agregar botón para copiar el código
     var copyButton = document.createElement("button");
     copyButton.innerHTML = '<i class="fas fa-copy"></i>';
     copyButton.classList.add("copy-button");
@@ -57,10 +69,15 @@ ws.onmessage = function(evt) {
     var textnode = document.createTextNode(message.message);
     node.appendChild(textnode);
   }
-
-  document.getElementById("lista_messages").appendChild(node);
+  if(message.from !== "user") {
+    document.getElementById("lista_messages").removeChild(document.getElementById("lista_messages").lastElementChild);
+    document.getElementById("lista_messages").appendChild(node);
+  }
+  else {
+    document.getElementById("lista_messages").appendChild(node);
+    loading_message()
+  }
   document.getElementById("message_input").focus();
-  // Resaltar el código con Highlight.js
   hljs.highlightAll();
 };
 
