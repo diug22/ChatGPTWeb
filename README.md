@@ -7,10 +7,10 @@ Uso de la api de ChatGPT en el navegador con estilo de chat.
 ### Añadir la API de OpenAI.
 
 #### Windows
-`setx OPEN_AI_API_KEY {API_KEY_OPEN_AI}`  
+`setx OPEN_AI_API_KEY "{API_KEY_OPEN_AI}"`  
 
 #### Linux/Mac
-`export OPEN_AI_API_KEY {API_KEY_OPEN_AI}`  
+`export OPEN_AI_API_KEY="{API_KEY_OPEN_AI}"`  
 
 
 ## Lanzamiento
