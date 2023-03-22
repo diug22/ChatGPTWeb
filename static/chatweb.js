@@ -33,6 +33,7 @@ function loading_message(){
 }
 
 function sendContext() {
+  console.log('JELO')
   var message = document.getElementById("contexto").value;
   console.log(message)
   ws.send(JSON.stringify({ message: message, from: "system" }));
@@ -81,20 +82,6 @@ ws.onmessage = function(evt) {
   hljs.highlightAll();
 };
 
-
-document.getElementById("button_send").onclick = sendMessage;
-
-document.getElementById("message_input").onkeypress = function(event) {
-  if (event.keyCode === 13) {
-    event.preventDefault();
-    sendMessage();
-  }
-};
-
-document.getElementById("message_input").focus();
-
-document.getElementById("context-form").onsubmit = sendContext;
-
 var recognition = new window.webkitSpeechRecognition();
 
 recognition.onresult = function(event) {
@@ -120,3 +107,8 @@ recognition.onstart = function() {
 recognition.onend = function() {
   buttonRecord.classList.remove("btn-record-recording");
 };
+
+document.getElementById("message_input").focus();
+
+document.getElementById("context_form_button").onclick = sendContext;
+document.getElementById("button_send").onclick = sendMessage;
